@@ -3,11 +3,11 @@ if ~exist('procUsData.m','file')
 end
 
 %% Skull Properties
-cMed = 2200;
+cMed = 2500;
 cCor = 2800;
 cSt = 1600;
 
-rhoMed = 1178;
+rhoMed = 1500;
 rhoCort = 1908;
 rhoSt = 1046;
 
@@ -15,16 +15,16 @@ zMed = cMed*rhoMed;
 zCor = cCor*rhoCort;
 zSt = cSt*rhoSt;
 
-dIt = 2.5e-3;
-dMed = 2e-3;
-dOt = 2.5e-3;
+dIt = 1.5e-3;
+dMed = 4e-3;
+dOt = 1.5e-3;
 
 % Attenuation in np/m
 alphaCor = 200;
-alphaMed = 500;
+alphaMed = 700;
 
 %% Sonication Properties
-f = 2.25e6;
+f = 1e6;
 nCycles = 3;
 
 nReflections = 3;
@@ -70,4 +70,5 @@ subplot(211)
 plot(t*1e6,real(pOut))
 
 subplot(212)
-plot(t*1e6,abs(hilbert(real(pOut))))
+plot(t*1e6,20*log10(abs(hilbert(real(pOut)))))
+axis([min(t)*1e6,max(t)*1e6,-90,0])
